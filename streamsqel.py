@@ -34,12 +34,11 @@ def create_record():
     highest_price = st.text_input("Enter the resistance price")
     lowest_price = st.text_input("Enter the support price")
     if st.button("Create"):
-        try:
-            c.execute("INSERT INTO stock_data (ticker, exchange, notes, highest_price, lowest_price) VALUES (?, ?, ?, ?, ?)", (ticker, exchange, notes, highest_price, lowest_price))
-            conn.commit()
-            st.success("Record Created Successfully!!!")
-        except sqlite3.IntegrityError:
-            st.error("Ticker or Exchange already exists!")
+        
+        c.execute("INSERT INTO stock_data (ticker, exchange, notes, highest_price, lowest_price) VALUES (?, ?, ?, ?, ?)", (ticker, exchange, notes, highest_price, lowest_price))
+        conn.commit()
+        st.success("Record Created Successfully!!!")
+        
 
 # Function to update a record
 def update_record():
@@ -51,12 +50,12 @@ def update_record():
     highest_price = st.text_input("Enter the resistance price")
     lowest_price = st.text_input("Enter the support price")
     if st.button("Update"):
-        try:
-            c.execute("UPDATE stock_data SET ticker=?, exchange=?, notes=?, highest_price=?, lowest_price=? WHERE id=?", (ticker, exchange, notes, highest_price, lowest_price, id))
-            conn.commit()
-            st.success("Record Updated Successfully!!!")
-        except sqlite3.IntegrityError:
-            st.error("Ticker or Exchange already exists!")
+    
+        c.execute("UPDATE stock_data SET ticker=?, exchange=?, notes=?, highest_price=?, lowest_price=? WHERE id=?", (ticker, exchange, notes, highest_price, lowest_price, id))
+        conn.commit()
+        st.success("Record Updated Successfully!!!")
+        
+        
 
 # Function to delete a record
 def delete_record():
@@ -110,7 +109,7 @@ def find_stock_price():
     if above_highest_messages:
         st.info("Above Resistance Price Alerts:")
         st.text("\n".join(above_highest_messages))
-
+    
 # Main function
 def main():
     st.title("CRUD Operations With SQLite")
@@ -126,9 +125,14 @@ def main():
         delete_record()
     elif option == "Find Stock Price":
         find_stock_price()
+    find_stock_price()
+
+    
+    display_records()
 
     # Display records at all times
-    display_records()
+    
 
 if __name__ == "__main__":
     main()
+    
