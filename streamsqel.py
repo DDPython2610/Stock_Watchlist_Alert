@@ -8,7 +8,7 @@ conn = sqlite3.connect('stock_alert.db')
 c = conn.cursor()
 
 # Create table if not exists
-c.execute('''CREATE TABLE IF NOT EXISTS stock_alert_data
+c.execute('''CREATE TABLE IF NOT EXISTS stock_data
              (id INTEGER PRIMARY KEY AUTOINCREMENT, 
              ticker TEXT UNIQUE, 
              exchange TEXT UNIQUE,
