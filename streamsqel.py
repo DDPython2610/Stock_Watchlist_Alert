@@ -7,15 +7,7 @@ from bs4 import BeautifulSoup
 conn = sqlite3.connect('stock_alert.db')
 c = conn.cursor()
 
-# Create table if not exists
-c.execute('''CREATE TABLE IF NOT EXISTS stock_data
-             (id INTEGER PRIMARY KEY AUTOINCREMENT, 
-             ticker TEXT UNIQUE, 
-             exchange TEXT UNIQUE,
-             highest_price REAL CHECK (highest_price >= 0),
-             lowest_price REAL CHECK (lowest_price >= 0),
-             notes TEXT)''')
-conn.commit()
+
 
 # Function to display the table
 def display_records():
