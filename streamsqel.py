@@ -20,7 +20,7 @@ conn.commit()
 # Function to display the table
 def display_records():
     st.subheader("Read Records")
-    c.execute("SELECT * FROM stock_alert_data")
+    c.execute("SELECT * FROM stock_data")
     result = c.fetchall()
     for row in result:
         st.write(row)
