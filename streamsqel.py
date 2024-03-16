@@ -104,7 +104,7 @@ def find_stock_price():
     
 # Main function
 def main():
-    st.title("CRUD Operations With SQLite")
+    st.title("Watchlist Alert")
 
     # Display Options for CRUD Operations
     option = st.sidebar.selectbox("Select an Operation", ("Create", "Update", "Delete", "Find Stock Price"))
